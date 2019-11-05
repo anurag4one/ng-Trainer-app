@@ -1,0 +1,51 @@
+<form (ngSubmit)="addTrainer()" #addForm="ngForm">
+  <table class="table table-hover">
+    <thead><tr><th colspan="2">Add Trainer</th></tr></thead>
+    <tr><td width="15%"><label for="name">Name</label></td>
+      <td><input name="name" [(ngModel)]=trainer.name #name=ngModel required pattern="[A-Za-z]{5,}" placeholder="Enter Name">
+       <span *ngIf="name.touched && name.invalid && 
+       (name.errors.required || name.errors.pattern)" class="alert-warning">
+        Invalid name or name cannot be empty!
+      </span>
+  </td></tr>
+  
+    <tr><td><label for="branch">Select Branch</label></td>
+      <td><select [(ngModel)]="trainer.branch" name="branch" #branch=ngModel required>
+        <option *ngFor="let b of branches" [value]="b">{{b}}</option> 
+      </select> <span *ngIf="branch.touched && branch.invalid && branch.errors.required" 
+      class="alert-warning">
+          Please select correct branch!
+      </span>
+    </td></tr>
+
+
+    <tr><td><label for="city">Select City</label></td>
+      <td><select [(ngModel)]="trainer.city" name="city" #city=ngModel required>
+        <option *ngFor="let c of cities" [value]="c">{{c}}</option> 
+      </select> <span *ngIf="city.touched && city.invalid && city.errors.required" 
+      class="alert-warning">
+          Please select correct city!
+      </span>
+    </td></tr>
+  
+
+  
+    <tr><td><label for="mobile">Mobile No</label></td>
+      <td><input name="mobile" [(ngModel)]="trainer.mobile" #mobile=ngModel required pattern="[7-9][0-9]{9}" placeholder="Enter Mobile No">
+      <span *ngIf="mobile.touched && mobile.invalid && 
+      (mobile.errors.required || mobile.errors.pattern)" class="alert-warning">
+        Invalid Mobile No. or mobile no cannot be empty!
+      </span>
+    </td></tr>
+  
+    <tr><td><label for="email">Email ID</label></td>
+      <td><input name="email" [(ngModel)]="trainer.email" #email=ngModel type="email" required pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" placeholder="Enter valid email" />
+        <span *ngIf="email.touched && email.invalid && 
+        (email.errors.required || email.errors.pattern)" class="alert-warning">
+          Invalid Email ID or email cannot be empty!
+        </span>
+      </td></tr>
+    <tr><th colspan="2"><button id="btn" type="submit" [disabled]="!addForm.valid" class="btn btn-success">Add Customer</button>
+    </th></tr>
+  </table>
+  </form>

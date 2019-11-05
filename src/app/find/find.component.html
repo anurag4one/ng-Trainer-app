@@ -1,0 +1,28 @@
+<form (ngSubmit)="findTrainer()">
+    <div class="form group">
+      <label>Enter name</label><br>
+      <input type="text" [(ngModel)]=name name="name"><br><br>
+    </div>
+    <div class="form group">
+      <button type="submit" class="btn btn-success">Search Trainer</button>
+    </div>
+  </form>
+  
+  <div [hidden]="!submitted">
+    <table class="table table-bordered">
+      <tr>
+        <th>Trainer name</th>
+        <th>Trainer branch</th>
+        <th>Trainer city</th>
+        <th>Trainer mobile no.</th>
+        <th>Trainer email-id</th>
+      </tr>
+      <tr *ngFor = 'let trnr of trainer'>
+        <td>{{trnr.name}}</td>
+        <td>{{trnr.branch}}</td>
+        <td>{{trnr.city}}</td>
+        <td>{{trnr.mobile}}</td>
+        <td>{{trnr.email}}</td>
+      </tr>
+    </table>
+  </div>

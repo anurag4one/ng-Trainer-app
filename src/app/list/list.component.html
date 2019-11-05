@@ -1,0 +1,17 @@
+<table class="table table-bordered">
+    <tr>
+      <th>Trainer Name<button class="btn btn-warning" (click)="sortByName()"> Sort </button></th>
+      <th>Trainer Branch</th>
+      <th>Trainer City</th>
+      <th>Trainer phone number</th>
+      <th>Trainer email id</th>
+    </tr>
+    <tr *ngFor="let trnr of trainers;let i = index">
+      <td>{{trnr.name}}</td>
+      <td>{{trnr.branch}}</td>
+      <td>{{trnr.city}}</td>
+      <td>{{trnr.mobile}}</td>
+      <td>{{trnr.email}}</td>
+      <td><button class="btn btn-warning" (click)="deleteTrainer(i)">Delete</button></td>
+    </tr>
+  </table>
